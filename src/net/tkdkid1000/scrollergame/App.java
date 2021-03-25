@@ -1,4 +1,4 @@
-package net.tkdkid1000.raptor;
+package net.tkdkid1000.scrollergame;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,9 +8,9 @@ import java.util.List;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import net.tkdkid1000.raptor.sprites.Player;
-import net.tkdkid1000.raptor.util.GameLoop;
-import net.tkdkid1000.raptor.util.Settings;
+import net.tkdkid1000.scrollergame.sprites.Player;
+import net.tkdkid1000.scrollergame.util.GameLoop;
+import net.tkdkid1000.scrollergame.util.Settings;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
