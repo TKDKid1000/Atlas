@@ -1,13 +1,23 @@
 package net.tkdkid1000.atlas;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
+import org.springframework.util.ResourceUtils;
 
 import com.google.gson.Gson;
 
@@ -203,12 +213,14 @@ public class App extends Application {
 	public void setupgame() throws IOException {
 		if (!new File(Settings.GAMEDIR, "map.json").exists()) {
 			FileWriter fw = new FileWriter(new File(Settings.GAMEDIR, "map.json"));
-			System.out.println(Arrays.asList(Assets.getAssetsFolder().listFiles()));
-			Scanner scan = new Scanner(new File(Assets.getAssetsFolder(), "map.json"));
+			InputStream in = getClass().getResourceAsStream("/map.json"); 
+			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			Scanner scan = new Scanner(reader);
 			while (scan.hasNextLine()) {
 				fw.write(scan.nextLine()+"\n");
 			}
 			fw.close();
+			scan.close();
 		}
 	}
 	
