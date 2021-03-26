@@ -23,9 +23,9 @@ public class MapStage {
 	
 	private void load() {
 		for (int x=0; x<map.length; x++) {
-			for (int z=0; z<map[x].length; z++) {
-				Rectangle rect = new Rectangle(z*size, x*size, z+1*size, x+1*size);
-				rect.setFill(colors.get(map[x][z]));
+			for (int y=0; y<map[y].length; y++) {
+				Rectangle rect = new Rectangle(y*size, x*size, y+1*size, x+1*size);
+				rect.setFill(colors.get(map[x][y]));
 				layer.getChildren().add(rect);
 			}
 		}

@@ -1,0 +1,14 @@
+[
+	[
+		"tree.png", "grass.png", "grass.png", "grass.png"
+	],
+	[
+		"tree.png", "grass.png", "tree.png", "water.png"
+	],
+	[
+		"grass.png", "grass.png", "water.png", "water.png"
+	],
+	[
+		"tree.png", "water.png", "water.png", "water.png"
+	]
+]

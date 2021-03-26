@@ -203,6 +203,15 @@ public abstract class Sprite {
 				&& other.getBoundsInParent().getMinY() <= getBounds().getMaxY());
 
 	}
+	
+	public boolean collidesWith(Sprite other) {
+
+		return (other.getBounds().getMaxX() >= getBounds().getMinX()
+				&& other.getBounds().getMaxY() >= getBounds().getMinY() 
+				&& other.getBounds().getMinX() <= getBounds().getMaxX() 
+				&& other.getBounds().getMinY() <= getBounds().getMaxY());
+
+	}
 
 	public void getDamagedBy(Sprite sprite) {
 		health -= sprite.getDamage();

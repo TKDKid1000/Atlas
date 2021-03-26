@@ -16,7 +16,7 @@ public class GameLoop extends AnimationTimer {
 			sprite.checkRemovability();
 			if (sprite instanceof Player) {
 				Player player = (Player) sprite;
-				if (playermovetimer == 20) {
+				if (playermovetimer == 1) {
 					player.handleInput();
 					playermovetimer = 0;
 				}
