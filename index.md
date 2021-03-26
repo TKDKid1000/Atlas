@@ -1,37 +1,19 @@
-## Welcome to GitHub Pages
+# Raptor
+An open world, 2d, minecraft style game!
 
-You can use the [editor on GitHub](https://github.com/TKDKid1000/Raptor/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+## Playing
+You spawn into a small world. Nobody is there, except you. This place is calm and fun, until the night.
+Monsters start spawning! It is soon chaos. You must fight them off whilst collecting materials and creating shelter.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Controls
+Like most games, the movement controls are <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd>
+The inventory key is <kbd>E</kbd> and the use item button is <kbd>Space</kbd>
+To open the crafting menu press <kbd>c</kbd>
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/TKDKid1000/Raptor/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Building
+Not building in the game, building the game!
+In order to play a development version, simply follow these steps:
+1. Run the command `git clone https://github.com/TKDKid1000/Raptor`
+2. Navigate to the `Raptor` directory with `cd Raptor`
+3. Run the command `mvn clean install`
+4. Find the playable jar in `target/Raptor-<version>.jar`
