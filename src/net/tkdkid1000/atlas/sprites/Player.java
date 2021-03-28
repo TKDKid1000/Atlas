@@ -42,10 +42,10 @@ public class Player extends Sprite {
 	}
 	
 	public void handleitems() {
-		App.getInstance().weapon.setText(inv.getTool().getId() + " " + inv.getTool().getUses());
+		App.getInstance().weapon.setText(inv.getHeld().getId() + " " + inv.getHeld().getUses());
 		if (Input.keys.contains(KeyCode.SPACE)) {
 			if (!tooldelay) {
-				getInventory().getTool().use(this);
+				getInventory().getHeld().use(this);
 				tooldelay = true;
 				new Timeline(new KeyFrame(Duration.millis(500), event -> tooldelay = false)).play();
 			}
@@ -53,32 +53,57 @@ public class Player extends Sprite {
 	}
 	
 	public void handlemovement() {
+		App.getInstance().text.setText(super.getDirection()+"");
 		if (Input.keys.contains(KeyCode.W)) {
 			App.getInstance().sprites.forEach((sprite) -> {
 				if (sprite instanceof MapSprite || sprite instanceof Background) {
 					sprite.setY(sprite.getY()+speed);
-					sprite.setImage(new Image("/images/player/up.png"));
+					super.setImage(new Image("/images/player/up.png"));
+					super.setDirection(Direction.UP);
+					if (sprite instanceof Block && this.collidesWith(sprite)) {
+						App.getInstance().sprites.forEach((block) -> {
+							block.setY(block.getY()-speed);
+						});
+					}
 				}
 			});
 		} else if (Input.keys.contains(KeyCode.S)) {
 			App.getInstance().sprites.forEach((sprite) -> {
 				if (sprite instanceof MapSprite || sprite instanceof Background) {
 					sprite.setY(sprite.getY()-speed);
-					sprite.setImage(new Image("/images/player/down.png"));
+					super.setImage(new Image("/images/player/down.png"));
+					super.setDirection(Direction.DOWN);
+					if (sprite instanceof Block && this.collidesWith(sprite)) {
+						App.getInstance().sprites.forEach((block) -> {
+							block.setY(block.getY()+speed);
+						});
+					}
 				}
 			});
 		} else if (Input.keys.contains(KeyCode.A)) {
 			App.getInstance().sprites.forEach((sprite) -> {
 				if (sprite instanceof MapSprite || sprite instanceof Background) {
 					sprite.setX(sprite.getX()+speed);
-					sprite.setImage(new Image("/images/player/left.png"));
+					super.setImage(new Image("/images/player/left.png"));
+					super.setDirection(Direction.LEFT);
+					if (sprite instanceof Block && this.collidesWith(sprite)) {
+						App.getInstance().sprites.forEach((block) -> {
+							block.setX(block.getX()-speed);
+						});
+					}
 				}
 			});
 		} else if (Input.keys.contains(KeyCode.D)) {
 			App.getInstance().sprites.forEach((sprite) -> {
 				if (sprite instanceof MapSprite || sprite instanceof Background) {
 					sprite.setX(sprite.getX()-speed);
-					sprite.setImage(new Image("/images/player/right.png"));
+					super.setImage(new Image("/images/player/right.png"));
+					super.setDirection(Direction.RIGHT);
+					if (sprite instanceof Block && this.collidesWith(sprite)) {
+						App.getInstance().sprites.forEach((block) -> {
+							block.setX(block.getX()+speed);
+						});
+					}
 				}
 			});
 		}

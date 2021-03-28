@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.google.gson.Gson;
@@ -23,6 +25,7 @@ import javafx.util.Duration;
 import net.tkdkid1000.atlas.items.food.Apple;
 import net.tkdkid1000.atlas.items.tools.Sword;
 import net.tkdkid1000.atlas.sprites.Background;
+import net.tkdkid1000.atlas.sprites.Block;
 import net.tkdkid1000.atlas.sprites.MapSprite;
 import net.tkdkid1000.atlas.sprites.Player;
 import net.tkdkid1000.atlas.util.GameLoop;
@@ -109,7 +112,6 @@ public class App extends Application {
 			}
 			
 		};
-		App.getInstance().sprites.add(bg);
 		AnimationTimer gameloop = new GameLoop();
 		gameloop.start();
 		new Input(scene);
@@ -135,8 +137,6 @@ public class App extends Application {
 		player = new Player(playfieldLayer, new Image("/steve.png"), (Settings.GAME_WIDTH/2)+25, (Settings.GAME_HEIGHT/2)+25, 0, 0, 0, 0, Direction.DOWN, 20, 20, 5, 10.0);
 		player.getInventory().addItem(new Sword(), 1);
 		player.getInventory().addItem(new Apple(), 1);
-		App.getInstance().sprites.add(player);
-		
 	}
 	
 	public void addText() {
@@ -184,22 +184,24 @@ public class App extends Application {
 	
 	public void jsonmap() throws FileNotFoundException {
 		Gson gson = new Gson();
-		File f = new File(Settings.GAMEDIR, "map.json");
-		Scanner s = new Scanner(f);
+		Block b = new Block(backdropLayer, new Image("/steve.png"), 0, 0, 0, 0, 0, 0, Direction.DOWN, 10, 10);
+		System.out.println(b == null);
+		Scanner scanner = new Scanner(new File(Settings.GAMEDIR, "map.json"));
 		String data = "";
-		while (s.hasNextLine()) {
-			data = data + s.nextLine() + "\n";
+		while (scanner.hasNextLine()) {
+			data = data + scanner.nextLine() + "\n";
 		}
-		s.close();
+		scanner.close();
 		String[][] map = gson.fromJson(data, String[][].class);
 		int size = 86;
-		for (int x=0; x<map.length; x++) {
-			for (int y=0; y<map[x].length; y++) {
-				Image image = new Image("/images/objects/"+map[y][x], size, size, true, true);
-				MapSprite piece = new MapSprite(playfieldLayer, image, y*size, x*size, 0, 0, 0, 0, Direction.UP, 20, 0);
-				App.getInstance().sprites.add(piece);
-			}
-		}
+//		for (int x=0; x<map.length; x++) {
+//			for (int y=0; y<map[x].length; y++) {
+//				MapSprite piece = gson.fromJson(map[y][x], MapSprite.class);
+//				piece.setX(y*size);
+//				piece.setY(y*size);
+//				App.getInstance().sprites.add(piece);
+//			}
+//		}
 	}
 	
 	public void setupgame() throws IOException {

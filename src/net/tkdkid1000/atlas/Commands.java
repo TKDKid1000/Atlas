@@ -42,7 +42,7 @@ public class Commands {
 						App.getInstance().sprites.forEach(sprite -> {
 							if (sprite instanceof Player) {
 								Player player = (Player) sprite;
-								player.getInventory().setTool(new Sword());
+								player.getInventory().setHeld(new Sword());
 							}
 						});
 					} else if (cmd.equalsIgnoreCase("help")) {

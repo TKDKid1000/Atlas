@@ -57,6 +57,7 @@ public abstract class Sprite {
 		this.height = image.getHeight();
 
 		addToLayer();
+		App.getInstance().sprites.add(this);
 	}
 
 	public void addToLayer() {
@@ -72,10 +73,14 @@ public abstract class Sprite {
 	}
 	
 	public void setImage(Image image) {
+		this.removeFromLayer();
 		this.image = image;
 		this.imageView = new ImageView(image);
 		this.imageView.relocate(x, y);
 		this.imageView.setRotate(r);
+		this.width = this.image.getWidth();
+		this.height = this.image.getHeight();
+		this.addToLayer();
 	}
 
 	public void setLayer(Pane layer) {

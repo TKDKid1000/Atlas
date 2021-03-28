@@ -11,6 +11,7 @@ import javafx.scene.shape.Rectangle;
 import net.tkdkid1000.atlas.App;
 import net.tkdkid1000.atlas.items.Inventory;
 import net.tkdkid1000.atlas.items.Item;
+import net.tkdkid1000.atlas.items.tools.Sword;
 import net.tkdkid1000.atlas.util.Settings;
 
 public class InventoryGui extends Gui {
@@ -33,9 +34,10 @@ public class InventoryGui extends Gui {
 			if (!(x >= items.size())) {
 				ImageView view = new ImageView(items.get(x).getImage());
 				view.relocate((Settings.GAME_WIDTH/2-200)+(x*20), Settings.GAME_HEIGHT/2+200);
+				int[] eventX = {x};
 				view.setOnMouseClicked(event -> {
 					if (event.getButton() == MouseButton.PRIMARY) {
-						
+						App.getInstance().player.getInventory().setHeldFromInventory(items.get(eventX[0]));
 					}
 				});
 				super.nodes.add(view);

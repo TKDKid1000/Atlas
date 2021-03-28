@@ -3,32 +3,31 @@ package net.tkdkid1000.atlas.items;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.tkdkid1000.atlas.items.tools.None;
+import net.tkdkid1000.atlas.items.tools.Fist;
 
 public class Inventory {
 
 	private Map<Item, Integer> items;
-	private Tool tool;
+	private Item held;
 	
 	public Inventory() {
 		this.items = new HashMap<Item, Integer>();
-		this.tool = new None();
+		this.held = new Fist();
 	}
 	
-	public Tool getTool() {
-		return this.tool;
+	public Item getHeld() {
+		return this.held;
 	}
 	
-	public Inventory setTool(Tool tool) {
-		this.tool = tool;
+	public Inventory setHeld(Item item) {
+		addItem(getHeld(), 1);
+		this.held = item;
 		return this;
 	}
 	
-	public Inventory setToolFromInventory(Tool tool) {
-		if (items.containsKey(tool)) {
-			setTool(tool);
-			removeItem(tool);
-		}
+	public Inventory setHeldFromInventory(Item item) {
+		setHeld(item);
+		removeItem(item);
 		return this;
 	}
 	
@@ -53,7 +52,7 @@ public class Inventory {
 	
 	public Inventory clear() {
 		this.items.clear();
-		this.tool = new None();
+		this.held = new Fist();
 		return this;
 	}
 }

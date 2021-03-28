@@ -6,14 +6,14 @@ import net.tkdkid1000.atlas.sprites.Player;
 public class Sword extends Tool {
 
 	public Sword() {
-		super("sword", 10, "sword.png", 1.0);
+		super("sword", 10, "swords/sword.png", 1.0);
 	}
 
 	@Override
 	public void use(Player player) {
 		uses--;
 		if (uses == 0) {
-			player.getInventory().setTool(new None());
+			player.getInventory().setHeld(new Fist());
 		}
 	}
 }
