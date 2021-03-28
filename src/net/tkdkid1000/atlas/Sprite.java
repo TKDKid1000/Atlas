@@ -20,6 +20,8 @@ public abstract class Sprite {
 	protected double dx;
 	protected double dy;
 	protected double dr;
+	
+	protected Direction direction;
 
 	protected double health;
 	protected double damage;
@@ -31,7 +33,7 @@ public abstract class Sprite {
 
 	protected boolean canMove = true;
 
-	public Sprite(Pane layer, Image image, double x, double y, double r, double dx, double dy, double dr, double health, double damage) {
+	public Sprite(Pane layer, Image image, double x, double y, double r, double dx, double dy, double dr, Direction direction, double health, double damage) {
 
 		this.layer = layer;
 		this.image = image;
@@ -42,6 +44,8 @@ public abstract class Sprite {
 		this.dy = dy;
 		this.dr = dr;
 
+		this.direction = direction;
+		
 		this.health = health;
 		this.damage = damage;
 
@@ -65,6 +69,13 @@ public abstract class Sprite {
 
 	public Pane getLayer() {
 		return layer;
+	}
+	
+	public void setImage(Image image) {
+		this.image = image;
+		this.imageView = new ImageView(image);
+		this.imageView.relocate(x, y);
+		this.imageView.setRotate(r);
 	}
 
 	public void setLayer(Pane layer) {
@@ -117,6 +128,14 @@ public abstract class Sprite {
 
 	public void setDr(double dr) {
 		this.dr = dr;
+	}
+	
+	public Direction getDirection() {
+		return direction;
+	}
+	
+	public void setDirection(Direction direction) {
+		this.direction = direction;
 	}
 
 	public double getHealth() {

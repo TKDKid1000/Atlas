@@ -7,6 +7,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import net.tkdkid1000.atlas.App;
+import net.tkdkid1000.atlas.Direction;
 import net.tkdkid1000.atlas.Input;
 import net.tkdkid1000.atlas.Sprite;
 import net.tkdkid1000.atlas.items.Inventory;
@@ -18,9 +19,9 @@ public class Player extends Sprite {
 	private Inventory inv;
 	private boolean tooldelay;
 	
-	public Player(Pane layer, Image image, double x, double y, double r, double dx, double dy, double dr, double health,
+	public Player(Pane layer, Image image, double x, double y, double r, double dx, double dy, double dr, Direction dir, double health,
 			double damage, int speed, double food) {
-		super(layer, image, x, y, r, dx, dy, dr, health, damage);
+		super(layer, image, x, y, r, dx, dy, dr, dir, health, damage);
 //		cancelexit();
 		this.speed = speed;
 		this.food = food;
@@ -56,24 +57,28 @@ public class Player extends Sprite {
 			App.getInstance().sprites.forEach((sprite) -> {
 				if (sprite instanceof MapSprite || sprite instanceof Background) {
 					sprite.setY(sprite.getY()+speed);
+					sprite.setImage(new Image("/images/player/up.png"));
 				}
 			});
 		} else if (Input.keys.contains(KeyCode.S)) {
 			App.getInstance().sprites.forEach((sprite) -> {
 				if (sprite instanceof MapSprite || sprite instanceof Background) {
 					sprite.setY(sprite.getY()-speed);
+					sprite.setImage(new Image("/images/player/down.png"));
 				}
 			});
 		} else if (Input.keys.contains(KeyCode.A)) {
 			App.getInstance().sprites.forEach((sprite) -> {
 				if (sprite instanceof MapSprite || sprite instanceof Background) {
 					sprite.setX(sprite.getX()+speed);
+					sprite.setImage(new Image("/images/player/left.png"));
 				}
 			});
 		} else if (Input.keys.contains(KeyCode.D)) {
 			App.getInstance().sprites.forEach((sprite) -> {
 				if (sprite instanceof MapSprite || sprite instanceof Background) {
 					sprite.setX(sprite.getX()-speed);
+					sprite.setImage(new Image("/images/player/right.png"));
 				}
 			});
 		}

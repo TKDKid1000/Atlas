@@ -101,7 +101,7 @@ public class App extends Application {
 		weapon = new Text();
 		notification = new Text();
 		chat = new Text();
-		Background bg = new Background(backdropLayer, new Image("/bg.png", 9000, 9000, true, true), 0, 0, 0, 0, 0, 0, 0, 0) {
+		Background bg = new Background(backdropLayer, new Image("/bg.png", 9000, 9000, true, true), 0, 0, 0, 0, 0, 0, Direction.UP, 0, 0) {
 
 			@Override
 			public void checkRemovability() {
@@ -132,7 +132,7 @@ public class App extends Application {
 //			{'b', 'b', 'b', 'b', 'b', 'b', 'b', 'g', 'g', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'g', 'g'},
 //			{'b', 'b', 'b', 'b', 'b', 'b', 'b', 'g', 'g', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'g', 'g'},
 //		}, Settings.PLATFORM_SIZE, colors);
-		player = new Player(playfieldLayer, new Image("/steve.png"), (Settings.GAME_WIDTH/2)+25, (Settings.GAME_HEIGHT/2)+25, 0, 0, 0, 0, 20, 20, 5, 10.0);
+		player = new Player(playfieldLayer, new Image("/steve.png"), (Settings.GAME_WIDTH/2)+25, (Settings.GAME_HEIGHT/2)+25, 0, 0, 0, 0, Direction.DOWN, 20, 20, 5, 10.0);
 		player.getInventory().addItem(new Sword(), 1);
 		player.getInventory().addItem(new Apple(), 1);
 		App.getInstance().sprites.add(player);
@@ -196,7 +196,7 @@ public class App extends Application {
 		for (int x=0; x<map.length; x++) {
 			for (int y=0; y<map[x].length; y++) {
 				Image image = new Image("/images/objects/"+map[y][x], size, size, true, true);
-				MapSprite piece = new MapSprite(playfieldLayer, image, y*size, x*size, 0, 0, 0, 0, 20, 0);
+				MapSprite piece = new MapSprite(playfieldLayer, image, y*size, x*size, 0, 0, 0, 0, Direction.UP, 20, 0);
 				App.getInstance().sprites.add(piece);
 			}
 		}
